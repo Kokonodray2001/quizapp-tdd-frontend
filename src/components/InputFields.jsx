@@ -1,17 +1,22 @@
-import React, { useState } from "react";
+import { useEffect } from "react";
 
-export default function InputFields({ type, placeholder, dataTestId }) {
-  const [val, setVal] = useState("");
-  const onChangeHandler = (e) => {
-    setVal(e.target.value);
-  };
+export default function InputFields({
+  type,
+  placeholder,
+  dataTestId,
+  onChangeHandler,
+  val,
+}) {
+  useEffect(() => {
+    console.log(val);
+  }, [val]);
   return (
     <input
       data-testid={dataTestId}
       type={type}
       placeholder={placeholder}
-      value={val}
       onChange={onChangeHandler}
+      value={val}
     ></input>
   );
 }
