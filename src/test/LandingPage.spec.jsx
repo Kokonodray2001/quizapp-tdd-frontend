@@ -2,7 +2,6 @@
 import { fireEvent, render } from "@testing-library/react";
 import LandingPage from "../components/LandingPage";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
 import QuizContext, { QuizProvider } from "../context/quizContext";
 
 jest.mock("react-router-dom", () => ({
