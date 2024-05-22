@@ -5,7 +5,7 @@ import { fireEvent, render } from "@testing-library/react";
 jest.mock("react-router-dom", () => ({
   useNavigate: jest.fn(),
 }));
-
+// jest.mock("react-router-dom");
 describe("Rendering test", () => {
   it("should render welcome to my quiz app", () => {
     const { getByText } = render(<HomePage />);

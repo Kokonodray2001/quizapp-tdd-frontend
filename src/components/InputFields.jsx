@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 export default function InputFields({
   type,
   placeholder,
@@ -7,9 +5,6 @@ export default function InputFields({
   onChangeHandler,
   val,
 }) {
-  useEffect(() => {
-    console.log(val);
-  }, [val]);
   return (
     <input
       data-testid={dataTestId}
