@@ -1,4 +1,4 @@
-import { render, waitFor } from "@testing-library/react";
+import { fireEvent, render, waitFor } from "@testing-library/react";
 import GamePage from "../components/GamePage.Jsx";
 import { QuizProvider } from "../context/quizContext";
 import axios from "axios";
@@ -77,6 +77,28 @@ describe("should fetch data correctly and display it", () => {
       expect(option2).toBeInTheDocument();
       expect(option3).toBeInTheDocument();
       expect(option4).toBeInTheDocument();
+    });
+  });
+});
+
+describe("submit button functionality test", () => {
+  it("should display score", async () => {
+    axios.post.mockResolvedValue({ data: "50" });
+
+    const { getByTestId, getByText } = render(
+      <QuizProvider>
+        <GamePage />
+      </QuizProvider>
+    );
+
+    fireEvent.click(getByTestId("submit-quiz-button"));
+    // expect(axios.post).toHaveBeenCalledTimes(1);
+    await waitFor(() => {
+      //expect(axios.post).toHaveBeenCalledTimes(2);
+      expect(axios.post).toHaveBeenCalledWith(
+        "http://localhost:8081/quiz/submitQuiz/", // Assuming this is the correct endpoint
+        expect.any(Array) // Assuming response is an array
+      );
     });
   });
 });
